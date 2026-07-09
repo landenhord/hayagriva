@@ -60,7 +60,7 @@ enum LocatorTypes {
     Canon,
     Chapter,
     Column,
-    #[value(name="e-location")]
+    #[value(name = "e-location")]
     Elocation,
     Equation,
     Figure,
@@ -460,9 +460,13 @@ verse       volume"#)
             let (style, locales, locale) =
                 retrieve_assets(style, csl, locale_path, locale_str);
 
-            let indicated_locator = if let Some(locator_type) = sub_matches.get_one::<LocatorTypes>("locator_type") {
+            let indicated_locator = if let Some(locator_type) =
+                sub_matches.get_one::<LocatorTypes>("locator_type")
+            {
                 locator_type.into()
-            } else { Locator::Custom };
+            } else {
+                Locator::Custom
+            };
 
             let assign_locator = |(i, e)| {
                 let mut item = CitationItem::with_entry(e);
